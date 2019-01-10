@@ -30,5 +30,5 @@ app.post('*', upload.array(), (req, res) => {
   })
 })
 
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 18692
 app.listen(port, () => console.log(`gh-oauth-server listening on port ${port}`))
