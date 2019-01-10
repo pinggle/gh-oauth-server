@@ -3413,7 +3413,7 @@ var Gitment = function () {
       }, options);
 
       this.state.user.isLoggingIn = true;
-      _utils.http.post('http://gh-oauth-server.xiaodata.net', {
+      _utils.http.post('https://gh-oauth.imsun.net', {
         code: code,
         client_id: client_id,
         client_secret: client_secret

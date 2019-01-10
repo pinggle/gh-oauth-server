@@ -1,88 +1,1146 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; connect-src 'self'">
-    <title>Page not found &middot; GitHub Pages</title>
-    <style type="text/css" media="screen">
-      body {
-        background-color: #f1f1f1;
-        margin: 0;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      }
+.gitment-container {
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  word-wrap: break-word;
+}
 
-      .container { margin: 50px auto 40px auto; width: 600px; text-align: center; }
+.gitment-container * {
+  box-sizing: border-box;
+}
 
-      a { color: #4183c4; text-decoration: none; }
-      a:hover { text-decoration: underline; }
+.gitment-container *:disabled {
+  cursor: not-allowed;
+}
 
-      h1 { width: 800px; position:relative; left: -100px; letter-spacing: -1px; line-height: 60px; font-size: 60px; font-weight: 100; margin: 0px 0 50px 0; text-shadow: 0 1px 0 #fff; }
-      p { color: rgba(0, 0, 0, 0.5); margin: 20px 0; line-height: 1.6; }
+.gitment-container a,
+.gitment-container a:visited {
+  cursor: pointer;
+  text-decoration: none;
+}
 
-      ul { list-style: none; margin: 25px 0; padding: 0; }
-      li { display: table-cell; font-weight: bold; width: 1%; }
+.gitment-container a:hover {
+  text-decoration: underline;
+}
 
-      .logo { display: inline-block; margin-top: 35px; }
-      .logo-img-2x { display: none; }
-      @media
-      only screen and (-webkit-min-device-pixel-ratio: 2),
-      only screen and (   min--moz-device-pixel-ratio: 2),
-      only screen and (     -o-min-device-pixel-ratio: 2/1),
-      only screen and (        min-device-pixel-ratio: 2),
-      only screen and (                min-resolution: 192dpi),
-      only screen and (                min-resolution: 2dppx) {
-        .logo-img-1x { display: none; }
-        .logo-img-2x { display: inline-block; }
-      }
+.gitment-container .gitment-hidden {
+  display: none;
+}
 
-      #suggestions {
-        margin-top: 35px;
-        color: #ccc;
-      }
-      #suggestions a {
-        color: #666666;
-        font-weight: 200;
-        font-size: 14px;
-        margin: 0 10px;
-      }
+.gitment-container .gitment-spinner-icon {
+  fill: #333;
 
-    </style>
-  </head>
-  <body>
+  -webkit-animation: gitment-spin 1s steps(12) infinite;
+  animation: gitment-spin 1s steps(12) infinite;
+}
 
-    <div class="container">
+@-webkit-keyframes gitment-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
 
-      <h1>404</h1>
-      <p><strong>File not found</strong></p>
+@keyframes gitment-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg)
+  }
+}
 
-      <p>
-        The site configured at this address does not
-        contain the requested file.
-      </p>
+.gitment-root-container {
+  margin: 19px 0;
+}
 
-      <p>
-        If this is your site, make sure that the filename case matches the URL.<br>
-        For root URLs (like <code>http://example.com/</code>) you must provide an
-        <code>index.html</code> file.
-      </p>
+.gitment-header-container {
+  margin: 19px 0;
+}
 
-      <p>
-        <a href="https://help.github.com/pages/">Read the full documentation</a>
-        for more information about using <strong>GitHub Pages</strong>.
-      </p>
+.gitment-header-like-btn,
+.gitment-comment-like-btn {
+  cursor: pointer;
+}
 
-      <div id="suggestions">
-        <a href="https://githubstatus.com">GitHub Status</a> &mdash;
-        <a href="https://twitter.com/githubstatus">@githubstatus</a>
-      </div>
+.gitment-comment-like-btn {
+  float: right;
+}
 
-      <a href="/" class="logo logo-img-1x">
-        <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpFMTZCRDY3REIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpFMTZCRDY3RUIzRjAxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdCQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjdDQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+SM9MCAAAA+5JREFUeNrEV11Ik1EY3s4+ddOp29Q5b0opCgKFsoKoi5Kg6CIhuwi6zLJLoYLopq4qsKKgi4i6CYIoU/q5iDAKs6syoS76IRWtyJ+p7cdt7sf1PGOD+e0c3dygAx/67ZzzPM95/877GYdHRg3ZjMXFxepQKNS6sLCwJxqNNuFpiMfjVs4ZjUa/pmmjeD6VlJS8NpvNT4QQ7mxwjSsJiEQim/1+/9lgMHgIr5ohuxG1WCw9Vqv1clFR0dCqBODElV6v90ogEDjGdYbVjXhpaendioqK07CIR7ZAqE49PT09BPL2PMgTByQGsYiZlQD4uMXtdr+JxWINhgINYhGT2MsKgMrm2dnZXgRXhaHAg5jEJodUAHxux4LudHJE9RdEdA+i3Juz7bGHe4mhE9FNrgwBCLirMFV9Okh5eflFh8PR5nK5nDabrR2BNJlKO0T35+Li4n4+/J+/JQCxhmu5h3uJoXNHPbmWZAHMshWB8l5/ipqammaAf0zPDDx1ONV3vurdidqwAQL+pEc8sLcAe1CCvQ3YHxIW8Pl85xSWNC1hADDIv0rIE/o4J0k3kww4xSlwIhcq3EFFOm7KN/hUGOQkt0CFa5WpNJlMvxBEz/IVQAxg/ZRZl9wiHA63yDYieM7DnLP5CiAGsC7I5sgtYKJGWe2A8seFqgFJrJjEPY1Cn3pJ8/9W1e5VWsFDTEmFrBcoDhZJEQkXuhICMyKpjhahqN21hRYATKfUOlDmkygrR4o4C0VOLGJKrOITKB4jijzdXygBKixyC5TDQdnk/Pz8qRw6oOWGlsTKGOQW6OH6FBWsyePxdOXLTgxiyebILZCjz+GLgMIKnXNzc49YMlcRdHXcSwxFVgTInQhC9G33UhNoJLuqq6t345p9y3eUy8OTk5PjAHuI9uo4b07FBaOhsu0A4Unc+T1TU1Nj3KsSSE5yJ65jqF2DDd8QqWYmAZrIM2VlZTdnZmb6AbpdV9V6ec9znf5Q7HjYumdRE0JOp3MjitO4SFa+cZz8Umqe3TCbSLvdfkR/kWDdNQl5InuTcysOcpFT35ZrbBxx4p3JAHlZVVW1D/634VRt+FvLBgK/v5LV9WS+10xMTEwtRw7XvqOL+e2Q8V3AYIOIAXQ26/heWVnZCVfcyKHg2CBgTpmPmjYM8l24GyaUHyaIh7XwfR9ErE8qHoDfn2LTNAVC0HX6MFcBIP8Bi+6F6cdW/DICkANRfx99fEYFQ7Nph5i/uQiA214gno7K+guhaiKg9gC62+M8eR7XsBsYJ4ilam60Fb7r7uAj8wFyuwM1oIOWgfmDy6RXEEQzJMPe23DXrVS7rtyD3Df8z/FPgAEAzWU5Ku59ZAUAAAAASUVORK5CYII=">
-      </a>
+.gitment-comment-like-btn.liked {
+  color: #F44336;
+}
 
-      <a href="/" class="logo logo-img-2x">
-        <img width="32" height="32" title="" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEQUM1QkUxRUI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEQUM1QkUxRkI0MUMxMUUyQUQzREIxQzRENUFFNUM5NiI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkUxNkJENjdGQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkUxNkJENjgwQjNGMDExRTJBRDNEQjFDNEQ1QUU1Qzk2Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hfPRaQAAB6lJREFUeNrsW2mME2UYbodtt+2222u35QheoCCYGBQligIJgkZJNPzgigoaTEj8AdFEMfADfyABkgWiiWcieK4S+QOiHAYUj2hMNKgYlEujpNttu9vttbvdw+chU1K6M535pt3ubHCSyezR+b73eb73+t7vrfXsufOW4bz6+vom9/b23ovnNNw34b5xYGAgODg46Mbt4mesVmsWd1qSpHhdXd2fuP/Afcput5/A88xwymcdBgLqenp6FuRyuWV4zu/v759QyWBjxoz5t76+/gun09mK5xFyakoCAPSaTCazNpvNPoYVbh6O1YKGRF0u13sNDQ27QMzfpiAAKj0lnU6/gBVfAZW2WWpwwVzy0IgP3G73FpjI6REhAGA9qVRqA1b9mVoBVyIC2tDi8Xg24+dUzQiAbS/s7Ox8G2o/3mKCC+Zw0efzPQEfcVjYrARX3dbV1bUtHo8fMgt42f+Mp0yUTVQbdWsAHVsikdiHkHaPxcQXQufXgUBgMRxme9U0AAxfH4vFvjM7eF6UkbJS5qoQwEQGA57Ac5JllFyUVZZ5ckUEgMVxsK2jlSYzI+QXJsiyjzNEAJyJAzb/KQa41jJKL8pODMQiTEAymXw5n8/P0IjD3bh7Rgog59aanxiIRTVvV/oj0tnHca/WMrVwODwB3raTGxzkBg/gnZVapFV62Wy2n5AO70HM/5wbJ0QnXyQSaVPDIuNZzY0V3ntHMwxiwHA0Gj2Np7ecIBDgaDAYXKCQJM1DhrgJ3nhulcPbl8j4NmHe46X/g60fwbz3aewjkqFQaAqebWU1AOqyQwt8Id6qEHMc97zu7u7FGGsn7HAiVuosVw7P35C1nccdgSCxop1dHeZswmfHMnxBo6ZTk+jN8dl/vF7vWofDsa+MLN9oEUBMxOb3+1eoEsBVw6Zmua49r8YmhAKDiEPcMwBsxMiqQ+ixzPFxZyqRpXARG/YOr1ObFJ0gUskXBbamcR1OKmMUvDxHRAu8/LmY3jFLMUpFqz9HxG65smYJdyKyECOxDiEAe/p1gjF2oonivZAsxVgl2daa4EQWCW6J55qFAFFZiJWYLxNQy2qOSUzGRsyXCUDIeliwAHEO4WSlWQBRFoZakXcKmCXmyXAKs0Ve9vl8q42WoIYpJU4hV3hKcNs8m9gl7p/xQ73eF5kB4j5mNrWmTJRNwAzqiV1CxjVTZCIkEq+Z1bZFZSN2CenmVAFVy4Plz8xKAGWjjAKFk6lCBMDR/MJjLLMSQNm43xAiQKTaA+9/wewhDjL+JVI1kkTSSOTcKbMTwPqESAot6dn6Fr1gHwVJju6IRuyiByPuUUBAg5DGkAgBmxlvdgIEK9gDkohdY/BJo4CAG0R8miRSsGABkgVQs4KXu098IgUXSSRsFAoKZiVAVDY2WUiiPTjYRi41KwGisrGsLtlsth8Fiwnz2fBkQvWfRtlE3iF2yW63/yCacXZ1dW02GwGyTFaRd4idJnCKHRaCxYRHoG5LTKT6SyiToP1fJHbmAYPYRR0UnZQtMnA6s0zg+GZBlt0Gdo7EPHgpE3Q6nZ8YyLhc8Xj8MJh/aKTAY+5FPAKHLE7RdwuYJZmNwzyCMkBCYyKROJBMJl9B/PXXCjjmCmDOVzH3fiPpObEWGqoKe4EBl8v1hlqsdLvd23mkxHM9pc9kMpmno9HoeTii7ewbHEZPPx1ztLS1tV3AnGuMjiNjvbQFuHw6zDo5By7dTPAQNBgMLrRarTkSls1mnwT7uwp9virx9QzbW/HuV/j5d/b+6jniKlllP8lkeONJDk+dq9GsQTnC4fB1heO0K47Hwe7WdDr9nAKgXwOBwHI+C45Htj1d6sd429TUNEcmUdc+PRaLHcvn87dXW4ugzdsaGxufL94NFv9zi1J7GVbhlvb2dnaJ3SVrxfc+n2+NTsZ7/H7/Mr3g5XdSIHyJSH1PZ+7fToyl2+ErqilgZ4NaLYB9goVGaHjR93Hv1ZrU4XDsFT20kH3PObzbWk0CgG1jacVIUnAQb9F+VexyLMzkpcLv0IJV7AHQIOCAUYHx7v5qgScmYHtTqSAyZLEJTK22Bie4iq3xsqpm4SAf9Hq9a2DnJ4uLK3SEULcdRvp3i3zHySqpficxEdsQc1NrlYXXvR+O7qASSezXB+h1SuUomgg9LL8BUoV4749EIolKh+EiqWmqVEZlDgHks2pxHw7xTqUQw9J5NcAXOK10AGIoZ6Zli6JY6Z1Q461KoZ4NiKLHarW+KDsxlDUPHZ5zPQZqUVDPJsTqb5n9malbpAh8C2XXDLl62+WZIDFRUlNVOiwencnNU3aQEkL+cDMSoLvZo2fQB7AJssNAuFuvorlDVVkkg2I87+jo2K2QAVphDrfyViK5VqtO34OkaxXCp+7drdDBCAdubm6eidX+2WwqT5komwh4YQLk+H4aE93h8Xg2gvHekQZOGSgLZTLyDTLJ4Lx9/KZWKBSainT4Iy3FqQBfnUZR42PKQFksBr9QKVXCPusD3OiA/RkQ5kP8qV/Jl1WywAp/6+dcmPM2zL1UrUahe4JqfnWWKXIul3uUbfP8njAFLW1OFr3gdFtZ72cNH+PtQT7/brW+NXqJAHh0y9V8/U/A1U7AfwIMAD7mS3pCbuWJAAAAAElFTkSuQmCC">
-      </a>
-    </div>
-  </body>
-</html>
+.gitment-header-like-btn svg {
+  vertical-align: middle;
+  height: 30px;
+}
+
+.gitment-comment-like-btn svg {
+  vertical-align: middle;
+  height: 20px;
+}
+
+.gitment-header-like-btn.liked svg,
+.gitment-comment-like-btn.liked svg {
+  fill: #F44336;
+}
+
+a.gitment-header-issue-link,
+a.gitment-header-issue-link:visited {
+  float: right;
+  line-height: 30px;
+  color: #666;
+}
+
+a.gitment-header-issue-link:hover {
+  color: #666;
+}
+
+.gitment-comments-loading,
+.gitment-comments-error,
+.gitment-comments-empty {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.gitment-comments-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0 0 38px;
+}
+
+.gitment-comment,
+.gitment-editor-container {
+  position: relative;
+  min-height: 60px;
+  padding-left: 60px;
+  margin: 19px 0;
+}
+
+.gitment-comment-avatar,
+.gitment-editor-avatar {
+  float: left;
+  margin-left: -60px;
+}
+
+.gitment-comment-avatar,
+.gitment-comment-avatar-img,
+.gitment-comment-avatar,
+.gitment-editor-avatar-img,
+.gitment-editor-avatar svg {
+  width: 44px;
+  height: 44px;
+  border-radius: 3px;
+}
+
+.gitment-editor-avatar .gitment-github-icon {
+  fill: #fff;
+  background-color: #333;
+}
+
+.gitment-comment-main,
+.gitment-editor-main {
+  position: relative;
+  border: 1px solid #CFD8DC;
+  border-radius: 0;
+}
+
+.gitment-editor-main::before,
+.gitment-editor-main::after,
+.gitment-comment-main::before,
+.gitment-comment-main::after {
+  position: absolute;
+  top: 11px;
+  left: -16px;
+  display: block;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  content: "";
+  border-color: transparent;
+  border-style: solid solid outset;
+}
+
+.gitment-editor-main::before,
+.gitment-comment-main::before {
+  border-width: 8px;
+  border-right-color: #CFD8DC;
+}
+
+.gitment-editor-main::after,
+.gitment-comment-main::after {
+  margin-top: 1px;
+  margin-left: 2px;
+  border-width: 7px;
+  border-right-color: #fff;
+}
+
+.gitment-comment-header {
+  margin: 12px 15px;
+  color: #666;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.gitment-editor-header {
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #CFD8DC;
+}
+
+a.gitment-comment-name,
+a.gitment-comment-name:visited {
+  font-weight: 600;
+  color: #666;
+}
+
+.gitment-editor-tabs {
+  margin-bottom: -1px;
+  margin-left: -1px;
+}
+
+.gitment-editor-tab {
+  display: inline-block;
+  padding: 11px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #666;
+  text-decoration: none;
+  background-color: transparent;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: 0;
+
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+
+  outline: none;
+}
+
+.gitment-editor-tab.gitment-selected {
+  color: #333;
+  background-color: #fff;
+  border-color: #CFD8DC;
+}
+
+.gitment-editor-login {
+  float: right;
+  margin-top: -30px;
+  margin-right: 15px;
+}
+
+a.gitment-footer-project-link,
+a.gitment-footer-project-link:visited,
+a.gitment-editor-login-link,
+a.gitment-editor-login-link:visited {
+  color: #2196F3;
+}
+
+a.gitment-editor-logout-link,
+a.gitment-editor-logout-link:visited {
+  color: #666;
+}
+
+a.gitment-editor-logout-link:hover {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+.gitment-comment-body {
+  position: relative;
+  margin: 12px 15px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.gitment-comment-body-folded {
+  cursor: pointer;
+}
+
+.gitment-comment-body-folded::before {
+  display: block !important;
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 50px;
+  pointer-events: none;
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0), rgba(255, 255, 255, .9));
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .9));
+}
+
+.gitment-comment-body-folded::after {
+  display: block !important;
+  content: "Click to Expand" !important;
+  text-align: center;
+  color: #666;
+  position: absolute;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  left: 0;
+  bottom: 0;
+  pointer-events: none;
+  background: rgba(255, 255, 255, .9);
+}
+
+.gitment-editor-body {
+  margin: 0;
+}
+
+.gitment-comment-body > *:first-child,
+.gitment-editor-preview > *:first-child {
+  margin-top: 0 !important;
+}
+
+.gitment-comment-body > *:last-child,
+.gitment-editor-preview > *:last-child {
+  margin-bottom: 0 !important;
+}
+
+.gitment-editor-body textarea {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  max-height: 500px;
+  padding: 16px;
+  resize: vertical;
+
+  max-width: 100%;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+
+  background-color: #fff;
+
+  color: #333;
+  vertical-align: middle;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+
+  overflow: visible;
+}
+
+.gitment-editor-body textarea:focus {
+  background-color: #fff;
+}
+
+.gitment-editor-preview {
+  min-height: 150px;
+
+  padding: 16px;
+  background-color: transparent;
+
+  width: 100%;
+  font-size: 14px;
+
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.gitment-editor-footer {
+  padding: 0;
+  margin-top: 10px;
+}
+
+.gitment-editor-footer::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+a.gitment-editor-footer-tip {
+  display: inline-block;
+  padding-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+a.gitment-editor-footer-tip:hover {
+  color: #2196F3;
+  text-decoration: none;
+}
+
+.gitment-comments-pagination {
+  list-style: none;
+  text-align: right;
+  border-radius: 0;
+  margin: -19px 0 19px 0;
+}
+
+.gitment-comments-page-item {
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #CFD8DC;
+  margin-left: -1px;
+  padding: .25rem .5rem;
+}
+
+.gitment-comments-page-item:hover {
+  background-color: #f5f5f5;
+}
+
+.gitment-comments-page-item.gitment-selected {
+  background-color: #f5f5f5;
+}
+
+.gitment-editor-submit,
+.gitment-comments-init-btn {
+  color: #fff;
+  background-color: #00BCD4;
+
+  position: relative;
+  display: inline-block;
+  padding: 7px 13px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-size: 110% 110%;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.gitment-editor-submit:hover,
+.gitment-comments-init-btn:hover {
+  background-color: #00ACC1;
+}
+
+.gitment-comments-init-btn:disabled,
+.gitment-editor-submit:disabled {
+  color: rgba(255,255,255,0.75);
+  background-color: #4DD0E1;
+  box-shadow: none;
+}
+
+.gitment-editor-submit {
+  float: right;
+}
+
+.gitment-footer-container {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 12px;
+}
+
+/*
+ * Markdown CSS
+ * Copied from https://github.com/sindresorhus/github-markdown-css
+ */
+.gitment-markdown {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.gitment-markdown .pl-c {
+  color: #969896;
+}
+
+.gitment-markdown .pl-c1,
+.gitment-markdown .pl-s .pl-v {
+  color: #0086b3;
+}
+
+.gitment-markdown .pl-e,
+.gitment-markdown .pl-en {
+  color: #795da3;
+}
+
+.gitment-markdown .pl-smi,
+.gitment-markdown .pl-s .pl-s1 {
+  color: #333;
+}
+
+.gitment-markdown .pl-ent {
+  color: #63a35c;
+}
+
+.gitment-markdown .pl-k {
+  color: #a71d5d;
+}
+
+.gitment-markdown .pl-s,
+.gitment-markdown .pl-pds,
+.gitment-markdown .pl-s .pl-pse .pl-s1,
+.gitment-markdown .pl-sr,
+.gitment-markdown .pl-sr .pl-cce,
+.gitment-markdown .pl-sr .pl-sre,
+.gitment-markdown .pl-sr .pl-sra {
+  color: #183691;
+}
+
+.gitment-markdown .pl-v,
+.gitment-markdown .pl-smw {
+  color: #ed6a43;
+}
+
+.gitment-markdown .pl-bu {
+  color: #b52a1d;
+}
+
+.gitment-markdown .pl-ii {
+  color: #f8f8f8;
+  background-color: #b52a1d;
+}
+
+.gitment-markdown .pl-c2 {
+  color: #f8f8f8;
+  background-color: #b52a1d;
+}
+
+.gitment-markdown .pl-c2::before {
+  content: "^M";
+}
+
+.gitment-markdown .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #63a35c;
+}
+
+.gitment-markdown .pl-ml {
+  color: #693a17;
+}
+
+.gitment-markdown .pl-mh,
+.gitment-markdown .pl-mh .pl-en,
+.gitment-markdown .pl-ms {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.gitment-markdown .pl-mq {
+  color: #008080;
+}
+
+.gitment-markdown .pl-mi {
+  font-style: italic;
+  color: #333;
+}
+
+.gitment-markdown .pl-mb {
+  font-weight: bold;
+  color: #333;
+}
+
+.gitment-markdown .pl-md {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.gitment-markdown .pl-mi1 {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.gitment-markdown .pl-mc {
+  color: #ef9700;
+  background-color: #ffe3b4;
+}
+
+.gitment-markdown .pl-mi2 {
+  color: #d8d8d8;
+  background-color: #808080;
+}
+
+.gitment-markdown .pl-mdr {
+  font-weight: bold;
+  color: #795da3;
+}
+
+.gitment-markdown .pl-mo {
+  color: #1d3e81;
+}
+
+.gitment-markdown .pl-ba {
+  color: #595e62;
+}
+
+.gitment-markdown .pl-sg {
+  color: #c0c0c0;
+}
+
+.gitment-markdown .pl-corl {
+  text-decoration: underline;
+  color: #183691;
+}
+
+.gitment-markdown .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
+.gitment-markdown a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.gitment-markdown a:active,
+.gitment-markdown a:hover {
+  outline-width: 0;
+}
+
+.gitment-markdown strong {
+  font-weight: inherit;
+}
+
+.gitment-markdown strong {
+  font-weight: bolder;
+}
+
+.gitment-markdown h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.gitment-markdown img {
+  border-style: none;
+}
+
+.gitment-markdown svg:not(:root) {
+  overflow: hidden;
+}
+
+.gitment-markdown code,
+.gitment-markdown kbd,
+.gitment-markdown pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.gitment-markdown hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.gitment-markdown input {
+  font: inherit;
+  margin: 0;
+}
+
+.gitment-markdown input {
+  overflow: visible;
+}
+
+.gitment-markdown [type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.gitment-markdown * {
+  box-sizing: border-box;
+}
+
+.gitment-markdown input {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.gitment-markdown a {
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.gitment-markdown a:hover {
+  text-decoration: underline;
+}
+
+.gitment-markdown strong {
+  font-weight: 600;
+}
+
+.gitment-markdown hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+
+.gitment-markdown hr::before {
+  display: table;
+  content: "";
+}
+
+.gitment-markdown hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.gitment-markdown table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.gitment-markdown td,
+.gitment-markdown th {
+  padding: 0;
+}
+
+.gitment-markdown h1,
+.gitment-markdown h2,
+.gitment-markdown h3,
+.gitment-markdown h4,
+.gitment-markdown h5,
+.gitment-markdown h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gitment-markdown h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.gitment-markdown h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.gitment-markdown h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.gitment-markdown h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.gitment-markdown h5 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.gitment-markdown h6 {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.gitment-markdown p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.gitment-markdown blockquote {
+  margin: 0;
+}
+
+.gitment-markdown ul,
+.gitment-markdown ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gitment-markdown ol ol,
+.gitment-markdown ul ol {
+  list-style-type: lower-roman;
+}
+
+.gitment-markdown ul ul ol,
+.gitment-markdown ul ol ol,
+.gitment-markdown ol ul ol,
+.gitment-markdown ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.gitment-markdown dd {
+  margin-left: 0;
+}
+
+.gitment-markdown code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.gitment-markdown pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.gitment-markdown .octicon {
+  vertical-align: text-bottom;
+}
+
+.gitment-markdown .pl-0 {
+  padding-left: 0 !important;
+}
+
+.gitment-markdown .pl-1 {
+  padding-left: 4px !important;
+}
+
+.gitment-markdown .pl-2 {
+  padding-left: 8px !important;
+}
+
+.gitment-markdown .pl-3 {
+  padding-left: 16px !important;
+}
+
+.gitment-markdown .pl-4 {
+  padding-left: 24px !important;
+}
+
+.gitment-markdown .pl-5 {
+  padding-left: 32px !important;
+}
+
+.gitment-markdown .pl-6 {
+  padding-left: 40px !important;
+}
+
+.gitment-markdown::before {
+  display: table;
+  content: "";
+}
+
+.gitment-markdown::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.gitment-markdown>*:first-child {
+  margin-top: 0 !important;
+}
+
+.gitment-markdown>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.gitment-markdown a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.gitment-markdown .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+
+.gitment-markdown .anchor:focus {
+  outline: none;
+}
+
+.gitment-markdown p,
+.gitment-markdown blockquote,
+.gitment-markdown ul,
+.gitment-markdown ol,
+.gitment-markdown dl,
+.gitment-markdown table,
+.gitment-markdown pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.gitment-markdown hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+
+.gitment-markdown blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.gitment-markdown blockquote>:first-child {
+  margin-top: 0;
+}
+
+.gitment-markdown blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.gitment-markdown kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 0;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+
+.gitment-markdown h1,
+.gitment-markdown h2,
+.gitment-markdown h3,
+.gitment-markdown h4,
+.gitment-markdown h5,
+.gitment-markdown h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.gitment-markdown h1 .octicon-link,
+.gitment-markdown h2 .octicon-link,
+.gitment-markdown h3 .octicon-link,
+.gitment-markdown h4 .octicon-link,
+.gitment-markdown h5 .octicon-link,
+.gitment-markdown h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+.gitment-markdown h1:hover .anchor,
+.gitment-markdown h2:hover .anchor,
+.gitment-markdown h3:hover .anchor,
+.gitment-markdown h4:hover .anchor,
+.gitment-markdown h5:hover .anchor,
+.gitment-markdown h6:hover .anchor {
+  text-decoration: none;
+}
+
+.gitment-markdown h1:hover .anchor .octicon-link,
+.gitment-markdown h2:hover .anchor .octicon-link,
+.gitment-markdown h3:hover .anchor .octicon-link,
+.gitment-markdown h4:hover .anchor .octicon-link,
+.gitment-markdown h5:hover .anchor .octicon-link,
+.gitment-markdown h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+.gitment-markdown h1 {
+  padding-bottom: 0.3em;
+  font-size: 2em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.gitment-markdown h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.5em;
+  border-bottom: 1px solid #eaecef;
+}
+
+.gitment-markdown h3 {
+  font-size: 1.25em;
+}
+
+.gitment-markdown h4 {
+  font-size: 1em;
+}
+
+.gitment-markdown h5 {
+  font-size: 0.875em;
+}
+
+.gitment-markdown h6 {
+  font-size: 0.85em;
+  color: #6a737d;
+}
+
+.gitment-markdown ul,
+.gitment-markdown ol {
+  padding-left: 2em;
+}
+
+.gitment-markdown ul ul,
+.gitment-markdown ul ol,
+.gitment-markdown ol ol,
+.gitment-markdown ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gitment-markdown li>p {
+  margin-top: 16px;
+}
+
+.gitment-markdown li+li {
+  margin-top: 0.25em;
+}
+
+.gitment-markdown dl {
+  padding: 0;
+}
+
+.gitment-markdown dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.gitment-markdown dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.gitment-markdown table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+
+.gitment-markdown table th {
+  font-weight: 600;
+}
+
+.gitment-markdown table th,
+.gitment-markdown table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+
+.gitment-markdown table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.gitment-markdown table tr:nth-child(2n) {
+  background-color: #f5f5f5;
+}
+
+.gitment-markdown img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+.gitment-markdown code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27,31,35,0.05);
+  border-radius: 0;
+}
+
+.gitment-markdown code::before,
+.gitment-markdown code::after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.gitment-markdown pre {
+  word-wrap: normal;
+}
+
+.gitment-markdown pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.gitment-markdown .highlight {
+  margin-bottom: 16px;
+}
+
+.gitment-markdown .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.gitment-markdown .highlight pre,
+.gitment-markdown pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f5f5f5;
+  border-radius: 0;
+}
+
+.gitment-markdown pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.gitment-markdown pre code::before,
+.gitment-markdown pre code::after {
+  content: normal;
+}
+
+.gitment-markdown .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+
+.gitment-markdown kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 0;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+
+.gitment-markdown :checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+
+.gitment-markdown .task-list-item {
+  list-style-type: none;
+}
+
+.gitment-markdown .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.gitment-markdown .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+.gitment-markdown hr {
+  border-bottom-color: #eee;
+}
